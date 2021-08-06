@@ -9,7 +9,6 @@ const Beer = ({ beer }) => {
   const [imgColClass, setImgColClass] = useState("col-sm-2 d-flex");
   const [details, setDetails] = useState("col-sm-9 offset-sm-1");
 
-
   const titleAndTaglineStyle = {
     paddingTop: padding,
     textAlign: "start",
@@ -42,16 +41,20 @@ const Beer = ({ beer }) => {
   };
 
   return (
-    <div class="row m-5" style={styles.BeerCardStyle} onMouseEnter={handleHover}>
-      <div class="row  pt-4 pb-2">
-        <div class={imgColClass}>
+    <div
+      className="row m-5"
+      style={styles.BeerCardStyle}
+      onMouseEnter={handleHover}
+    >
+      <div className="row  pt-4 pb-2">
+        <div className={imgColClass}>
           <img
             src={beer.image_url}
-            class="img-fluid"
+            className="img-fluid"
             alt={`bottle of beer ${beer.name}`}
           />
         </div>
-        <div class={details} style={titleAndTaglineStyle}>
+        <div className={details} style={titleAndTaglineStyle}>
           <h1>
             <b>{beer.name}</b>
           </h1>
@@ -67,8 +70,11 @@ const Beer = ({ beer }) => {
             ""
           )}
           {clicked ? (
-            <div class="col">
-              <BeerDetails beer={beer} clickBtnHideDetails={clickBtnHideDetails} />
+            <div className="col">
+              <BeerDetails
+                beer={beer}
+                clickBtnHideDetails={clickBtnHideDetails}
+              />
             </div>
           ) : (
             ""

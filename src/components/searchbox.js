@@ -4,10 +4,10 @@ const SearchBox = ({ searchByName }) => {
 
 
   return (
-    <div class="container">
+    <div className="container">
       <input
         type="search"
-        class="form-control"
+        className="form-control"
         onChange={(e) => searchByName(e.target.value)}
         placeholder="Search..."
       />
