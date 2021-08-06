@@ -25,6 +25,7 @@ function App() {
     names = beers.filter((beer) => beer.name.toLowerCase().includes(str));
     if (names.length === 0) {
       setMessage("no beers found");
+      setBeersSearched(beers)
     } else {
       setMessage("");
       setBeersSearched(names);
