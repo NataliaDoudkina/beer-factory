@@ -27,7 +27,7 @@ function App() {
     let names = [];
     names = beers.filter((beer) => beer.name.toLowerCase().includes(str));
     if(names.length===0){
-setMessage("no results")
+      setMessage("no beer found")
     }
     else{
       setMessage("")
