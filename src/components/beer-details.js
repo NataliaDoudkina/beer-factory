@@ -11,6 +11,12 @@ const BeerDetails = ({ beer, clickBtnHideDetails }) => {
     
     const [ingredientsNames, setIngredientsNames] = useState([]);
 
+    useEffect(() => {
+        let ingredientNames = [];
+        ingredientNames = Object.keys(beer.ingredients);
+        setIngredientsNames(ingredientNames);
+    }, [beer.ingredients]);
+
     const formatContributedBy = (str) => {
         str = beer.contributed_by;
         let arr = str.split(" ");
@@ -19,59 +25,53 @@ const BeerDetails = ({ beer, clickBtnHideDetails }) => {
         return str;
     };
 
-    useEffect(() => {
-        let ingredientNames = [];
-        ingredientNames = Object.keys(beer.ingredients);
-        setIngredientsNames(ingredientNames);
-    }, [beer.ingredients]);
-
-    const handleClick = () => {
+    const handleHideDetails = () => {
         clickBtnHideDetails();
     };
 
     return (
         <div>
             <button 
-                    onClick={handleClick} 
+                    onClick={handleHideDetails} 
                     style={styles.Btn}
             >
                 Hide details
             </button>
             <ul 
-                    class="list-group" 
-                    style={{ listStyle: "disc" }}
+                    className="list-group" 
+                    style={{ listStyle: "disc", paddingTop: "2rem" }}
             >
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>
                         boil_volume:&nbsp;
                     </span>
                     {beer.boil_volume.value}&nbsp;
                     {beer.boil_volume.unit}
                 </li>
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>
                         brewers_tips: 
                     </span>
                     {beer.brewers_tips}
                 </li>
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>
                         contributed_by:&nbsp;
                     </span>
                     {formatContributedBy(beer.contributed_by)}
                 </li>
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>
                         description:&nbsp;
                     </span>
                     {beer.description}
                 </li>
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>first_brewed:&nbsp;
                     </span>
                     {beer.first_brewed}
                 </li>
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>
                         food_pairing:&nbsp;
                     </span>
@@ -84,7 +84,7 @@ const BeerDetails = ({ beer, clickBtnHideDetails }) => {
                         }
                     </ul>
                 </li>
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>
                         ingredients:&nbsp;
                     </span>
@@ -108,13 +108,13 @@ const BeerDetails = ({ beer, clickBtnHideDetails }) => {
                         </ul>
                     ))}
                 </li>
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>
                         tagline:&nbsp;
                     </span>
                     {beer.tagline}
                 </li>
-                <li class="list-group-item border-0 p-0">
+                <li className="list-group-item border-0 p-0">
                     <span>
                         volume:&nbsp;
                     </span>

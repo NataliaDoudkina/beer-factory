@@ -1,18 +1,18 @@
 import "./App.css";
 
 import {
-    useEffect,
-    useState
+     useEffect,
+     useState
 } from "react";
 
-import BeerList from "./components/beer-list";
+import BeerList from "./components/ListBeers";
 import SearchBox from "./components/searchbox";
 
 const App = () => {
     const [beers, setBeers] = useState([]);
     const [searchedBeers, setBeersSearched] = useState([]);
     const [message, setMessage] = useState("");
-  
+
     useEffect(() => {
         fetch("https://api.punkapi.com/v2/beers")
         .then((result) => result.json())
@@ -25,7 +25,7 @@ const App = () => {
         names = beers.filter((beer) => beer.name.toLowerCase().includes(str));
         if (names.length === 0) {
             setMessage("no beers found");
-            setBeersSearched(beers);
+        setBeersSearched(beers);
         } else {
             setMessage("");
             setBeersSearched(names);
@@ -33,27 +33,27 @@ const App = () => {
     };
     return (
         <div className="container-fluid App">
-            <header>
-                <h1>
-                    <b>Beer Factory</b>
-                </h1>
-            </header>
-            <div className="row justify-content-md-center ">
-                <div className="row">
-                    <div className="col">
-                        <SearchBox searchByName={searchByName} />
-                    </div>
-                </div>
+        <header>
+            <h1>
+                <b>Beer Factory</b>
+            </h1>
+        </header>
+        <div className="row justify-content-md-center ">
+            <div className="row">
+            <div className="col">
+                <SearchBox searchByName={searchByName} />
             </div>
-            <div className="col-sm-12 pt-5 ">
-                <BeerList
-                        message={message}
-                        beers={beers}
-                        searchedBeers={searchedBeers}
-                />
             </div>
         </div>
+        <div className="col-sm-12 pt-2">
+            <BeerList
+                    message={message}
+                    beers={beers}
+                    searchedBeers={searchedBeers}
+            />
+        </div>
+        </div>
     );
-}
+};
 
 export default App;

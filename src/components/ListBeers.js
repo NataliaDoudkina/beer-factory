@@ -1,10 +1,10 @@
 import Beer from "./Beer";
 import styles from "../styles";
 
-const BeerList = (props) => {
+const ListBeers = (props) => {
  
     return (
-        <div>
+        <>
             <p>
                 <b>{props.message}</b>
             </p>
@@ -14,7 +14,7 @@ const BeerList = (props) => {
             >
                 {props.searchedBeers.length > 0 ? props.searchedBeers.map((beer) => (
                     <li 
-                            className=" pt-4" 
+                            className=" pt-2" 
                             key={beer.id}
                     >
                         <Beer beer={beer} />
@@ -22,7 +22,7 @@ const BeerList = (props) => {
                     )) : (
                         props.beers.map((beer) => (
                             <li 
-                                    className="pt-4" 
+                                    className="pt-2" 
                                     key={beer.id}
                             >
                                 <Beer beer={beer} />
@@ -31,8 +31,8 @@ const BeerList = (props) => {
                     )
                 }
             </ul>
-        </div>
+        </>
     );
 };
 
-export default BeerList;
+export default ListBeers;

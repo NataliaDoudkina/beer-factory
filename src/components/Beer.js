@@ -2,12 +2,11 @@ import BeerDetails from "./beer-details";
 import styles from "../styles";
 import { useState } from "react";
 
-const Beer = ({ beer }) => {
+const Beer = (props) => {
     
     const [isButtonDisplayed, setIsButtonDisplayed] = useState(false);
     const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [containerHeight, ssetContainerHeight] = useState("20rem");
-    
 
     const handleHover = () => {
         if (isButtonClicked) {
@@ -20,7 +19,7 @@ const Beer = ({ beer }) => {
     const displayBeerDetails = () => {
         setIsButtonClicked(() => true);
         setIsButtonDisplayed(false);
-        ssetContainerHeight("auto");
+        ssetContainerHeight("100%");
     };
 
     const hideBeerDetails = () => {
@@ -30,7 +29,7 @@ const Beer = ({ beer }) => {
 
     return (
         <div
-                className="row m-5"
+                className="row mt-3 mr-3 ml-3"
                 onMouseEnter={handleHover}
         >
             <div className="row  pt-4 pb-2">
@@ -39,17 +38,17 @@ const Beer = ({ beer }) => {
                         style={{width: "100%", height: `${containerHeight}`, flexDirection: "row"}}
                 >
                     <img 
-                            src={beer.image_url}  
-                            alt={`bottle of beer ${beer.name}`} 
-                            height={"auto"} 
-                            width={"30%"} 
+                            src={props.beer.image_url}  
+                            alt={`bottle of beer ${props.beer.name}`} 
+                            height={"300px"} 
+                            width={"20%"} 
                             style={{objectFit: "contain", paddingTop: "2rem", paddingBottom: "2rem"}} 
                     />
-                    <div className="card-body">
+                    <div className="card-body" style={{width: "70%"}}>
                         <h4 className="card-title">
-                            {beer.name}
+                            {props.beer.name}
                         </h4>
-                        <h5>{beer.tagline}</h5>
+                        <h5>{props.beer.tagline}</h5>
                         {isButtonDisplayed ? (
                             <button 
                                     style={styles.Btn} 
@@ -61,9 +60,9 @@ const Beer = ({ beer }) => {
                             ""
                         )}
                         {isButtonClicked ? (
-                            <div className="col">
+                            <div className="col" style={{paddingLeft: "2rem"}}>
                                 <BeerDetails
-                                        beer={beer}
+                                        beer={props.beer}
                                         clickBtnHideDetails={hideBeerDetails}
                                 />
                             </div>
