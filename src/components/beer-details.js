@@ -8,9 +8,10 @@ import {
 import styles from "../styles";
 
 const BeerDetails = ({ beer, clickBtnHideDetails }) => {
+    
     const [ingredientsNames, setIngredientsNames] = useState([]);
 
-    const modifiedContributedBy = (str) => {
+    const formatContributedBy = (str) => {
         str = beer.contributed_by;
         let arr = str.split(" ");
         arr.pop();
@@ -19,9 +20,9 @@ const BeerDetails = ({ beer, clickBtnHideDetails }) => {
     };
 
     useEffect(() => {
-        let names = [];
-        names = Object.keys(beer.ingredients);
-        setIngredientsNames(names);
+        let ingredientNames = [];
+        ingredientNames = Object.keys(beer.ingredients);
+        setIngredientsNames(ingredientNames);
     }, [beer.ingredients]);
 
     const handleClick = () => {
@@ -57,7 +58,7 @@ const BeerDetails = ({ beer, clickBtnHideDetails }) => {
                     <span>
                         contributed_by:&nbsp;
                     </span>
-                    {modifiedContributedBy(beer.contributed_by)}
+                    {formatContributedBy(beer.contributed_by)}
                 </li>
                 <li class="list-group-item border-0 p-0">
                     <span>
@@ -71,31 +72,36 @@ const BeerDetails = ({ beer, clickBtnHideDetails }) => {
                     {beer.first_brewed}
                 </li>
                 <li class="list-group-item border-0 p-0">
-                    <span>food_pairing:&nbsp;</span>
+                    <span>
+                        food_pairing:&nbsp;
+                    </span>
                     <ul>
-                        {beer.food_pairing.map((el) => (
-                        <li>{el}</li>
-                        ))}
+                        {beer.food_pairing.map((item) => (
+                            <li>
+                                {item}
+                            </li>
+                            ))
+                        }
                     </ul>
                 </li>
                 <li class="list-group-item border-0 p-0">
                     <span>
                         ingredients:&nbsp;
                     </span>
-                    {ingredientsNames.map((name) => (
+                    {ingredientsNames.map((ingredient) => (
                         <ul>
                         {" "}
                             <li class="p-0">
-                                {name}:
+                                {ingredient}:
                             </li>
                             <ul>
-                                {beer.ingredients[name] instanceof Array ? (
-                                beer.ingredients[name].map((el) => (
-                                    <li class="p-0">{el["name"]}</li>
+                                {beer.ingredients[ingredient] instanceof Array ? (
+                                beer.ingredients[ingredient].map((item) => (
+                                    <li class="p-0">{item["name"]}</li>
                                 ))
                                 ) : (
                                     <li class="p-0">
-                                        {name} : {beer.ingredients[name]}
+                                        {ingredient} : {beer.ingredients[ingredient]}
                                     </li>
                                 )}
                             </ul>

@@ -4,8 +4,8 @@ import { useState } from "react";
 
 const Beer = ({ beer }) => {
     const [padding, setPadding] = useState("10%");
-    const [btnIsShown, setBtnIsShown] = useState(false);
-    const [clicked, setClicked] = useState(false);
+    const [isButtonDisplayed, setIsButtonDisplayed] = useState(false);
+    const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [imgColClass, setImgColClass] = useState("col-sm-2 d-flex");
     const [details, setDetails] = useState("col-sm-9 offset-sm-1");
 
@@ -17,23 +17,23 @@ const Beer = ({ beer }) => {
 
     const handleHover = () => {
         setPadding("5%");
-        if (clicked) {
-            setBtnIsShown(false);
+        if (isButtonClicked) {
+            setIsButtonDisplayed(false);
         } else {
-            setBtnIsShown(true);
+            setIsButtonDisplayed(true);
         }
     };
 
-    const clickBtnShowDetails = () => {
-        setClicked(() => true);
+    const displayBeerDetails = () => {
+        setIsButtonClicked(() => true);
         setImgColClass("col-sm-3 d-flex");
         setDetails("col-sm-8 offset-sm-1");
-        setBtnIsShown(false);
+        setIsButtonDisplayed(false);
     };
 
-    const clickBtnHideDetails = () => {
-        setBtnIsShown(true);
-        setClicked(false);
+    const hideBeerDetails = () => {
+        setIsButtonDisplayed(true);
+        setIsButtonClicked(false);
         setImgColClass("col-sm-2 d-flex");
         setDetails("col-sm-9 offset-sm-1");
     };
@@ -62,21 +62,21 @@ const Beer = ({ beer }) => {
                     <p>
                         <b>{beer.tagline}</b>
                     </p>
-                    {btnIsShown ? (
+                    {isButtonDisplayed ? (
                         <button 
                                 style={styles.Btn} 
-                                onClick={clickBtnShowDetails}
+                                onClick={displayBeerDetails}
                         >
                             Show details
                         </button>
                     ) : (
                         ""
                     )}
-                    {clicked ? (
+                    {isButtonClicked ? (
                         <div className="col">
                             <BeerDetails
                                     beer={beer}
-                                    clickBtnHideDetails={clickBtnHideDetails}
+                                    clickBtnHideDetails={hideBeerDetails}
                             />
                         </div>
                     ) : (

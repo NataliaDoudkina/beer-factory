@@ -9,7 +9,6 @@ import BeerList from "./components/beer-list";
 import SearchBox from "./components/searchbox";
 
 const App = () => {
- 
     const [beers, setBeers] = useState([]);
     const [beersSearched, setBeersSearched] = useState([]);
     const [message, setMessage] = useState("");
