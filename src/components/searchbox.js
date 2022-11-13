@@ -1,18 +1,15 @@
-import React from "react";
-
 const SearchBox = ({ searchByName }) => {
-
-
-  return (
-    <div class="container">
-      <input
-        type="search"
-        class="form-control"
-        onChange={(e) => searchByName(e.target.value)}
-        placeholder="Search..."
-      />
-    </div>
-  );
+    
+    return (
+        <div className="container">
+        <input
+                type="search"
+                className="form-control"
+                onChange={(e) => searchByName(e.target.value)}
+                placeholder="Search for beer..."
+        />
+        </div>
+    );
 };
 
 export default SearchBox;
