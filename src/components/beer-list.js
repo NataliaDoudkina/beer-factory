@@ -1,24 +1,26 @@
-import Beer from "./individual-beer";
+import Beer from "./Beer";
 import styles from "../styles";
 
-const BeerList = ({message, beers, beerSearched }) => {
+const BeerList = (props) => {
  
     return (
         <div>
             <p>
-                <b>{message}</b>
+                <b>{props.message}</b>
             </p>
             <ul 
                     className="list-group" 
                     style={styles.BeerListStyle}
             >
-                {beerSearched.length > 0
-                ? beerSearched.map((beer) => (
-                    <li className=" pt-4" key={beer.id}>
+                {props.searchedBeers.length > 0 ? props.searchedBeers.map((beer) => (
+                    <li 
+                            className=" pt-4" 
+                            key={beer.id}
+                    >
                         <Beer beer={beer} />
                     </li>
                     )) : (
-                        beers.map((beer) => (
+                        props.beers.map((beer) => (
                             <li 
                                     className="pt-4" 
                                     key={beer.id}

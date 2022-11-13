@@ -10,7 +10,7 @@ import SearchBox from "./components/searchbox";
 
 const App = () => {
     const [beers, setBeers] = useState([]);
-    const [beersSearched, setBeersSearched] = useState([]);
+    const [searchedBeers, setBeersSearched] = useState([]);
     const [message, setMessage] = useState("");
   
     useEffect(() => {
@@ -49,7 +49,7 @@ const App = () => {
                 <BeerList
                         message={message}
                         beers={beers}
-                        beerSearched={beersSearched}
+                        searchedBeers={searchedBeers}
                 />
             </div>
         </div>
