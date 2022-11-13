@@ -8,7 +8,7 @@ import {
 import BeerList from "./components/beer-list";
 import SearchBox from "./components/searchbox";
 
-function App() {
+const App = () => {
  
     const [beers, setBeers] = useState([]);
     const [beersSearched, setBeersSearched] = useState([]);
